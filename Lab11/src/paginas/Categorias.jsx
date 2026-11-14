@@ -1,18 +1,8 @@
 import { useEffect, useState } from 'react'
-import { crearCategoria, eliminarCategoria, listarCategorias } from '../api/categorias.js'
+import { eliminarCategoria, listarCategorias } from '../api/categorias.js'
+import describirError from '../api/describirError.js'
 import Button from '../componentes/Button/Button.jsx'
 import './categorias.css'
-
-function describirError(error) {
-  if (error.code === 'ECONNABORTED') return 'La API tardó demasiado en responder.'
-  if (!error.response) return 'No se pudo conectar con la API de Django.'
-  if (error.response.status === 400) {
-    return Object.entries(error.response.data).map(([campo, mensajes]) =>
-      `${campo}: ${Array.isArray(mensajes) ? mensajes.join(' ') : mensajes}`,
-    ).join(' ')
-  }
-  return `La API devolvió un error HTTP ${error.response.status}.`
-}
 
 function EsqueletoCategorias() {
   return (
@@ -27,16 +17,15 @@ function EsqueletoCategorias() {
   )
 }
 
-export default function Categorias() {
+export default function Categorias({ mensajeInicial = '' }) {
   const [pagina, setPagina] = useState(1)
   const [intento, setIntento] = useState(0)
   const [datos, setDatos] = useState(null)
   const [cargando, setCargando] = useState(true)
   const [error, setError] = useState(null)
-  const [formulario, setFormulario] = useState({ name: '', slug: '', description: '' })
   const [operacion, setOperacion] = useState(null)
   const [errorOperacion, setErrorOperacion] = useState(null)
-  const [mensaje, setMensaje] = useState('')
+  const [mensaje, setMensaje] = useState(mensajeInicial)
   const [confirmacion, setConfirmacion] = useState(null)
 
   useEffect(() => {
@@ -64,33 +53,6 @@ export default function Categorias() {
     setIntento((actual) => actual + 1)
   }
 
-  function cambiarCampo(evento) {
-    const { name, value } = evento.target
-    setFormulario((actual) => ({ ...actual, [name]: value }))
-  }
-
-  async function guardarCategoria(evento) {
-    evento.preventDefault()
-    if (operacion) return
-    setOperacion('crear')
-    setErrorOperacion(null)
-    setMensaje('')
-    try {
-      const categoria = await crearCategoria({
-        name: formulario.name.trim(),
-        slug: formulario.slug.trim(),
-        description: formulario.description.trim(),
-      })
-      setFormulario({ name: '', slug: '', description: '' })
-      setMensaje(`Categoría «${categoria.name}» creada correctamente.`)
-      solicitarPagina(1)
-    } catch (fallo) {
-      setErrorOperacion(fallo)
-    } finally {
-      setOperacion(null)
-    }
-  }
-
   async function borrarCategoria(categoria) {
     if (operacion) return
     setOperacion(categoria.slug)
@@ -114,22 +76,7 @@ export default function Categorias() {
         <a href="/">← Volver a la cartelera</a>
         <h1 id="titulo-categorias">Categorías</h1>
       </header>
-      <section className="categorias-formulario" aria-labelledby="titulo-nueva-categoria">
-        <h2 id="titulo-nueva-categoria">Nueva categoría</h2>
-        <form onSubmit={guardarCategoria}>
-          <fieldset disabled={Boolean(operacion)}>
-            <legend>Datos de la categoría</legend>
-            <label htmlFor="categoria-nombre">Nombre</label>
-            <input id="categoria-nombre" name="name" value={formulario.name} onChange={cambiarCampo} required maxLength={100} pattern={'.*\\S.*'} />
-            <label htmlFor="categoria-slug">Slug</label>
-            <input id="categoria-slug" name="slug" value={formulario.slug} onChange={cambiarCampo} required maxLength={50} pattern={'[a-zA-Z0-9_\\-]+'} aria-describedby="ayuda-slug" />
-            <small id="ayuda-slug">Identificador único: letras sin tildes, números, guiones o guiones bajos.</small>
-            <label htmlFor="categoria-descripcion">Descripción (opcional)</label>
-            <textarea id="categoria-descripcion" name="description" value={formulario.description} onChange={cambiarCampo} rows={3} />
-            <Button type="submit">{operacion === 'crear' ? 'Guardando…' : 'Crear categoría'}</Button>
-          </fieldset>
-        </form>
-      </section>
+      <Button href="/categorias/nueva">Nueva categoría</Button>
       <div className="categorias-mensajes" aria-live="polite" role="status">{mensaje}</div>
       {errorOperacion && <p className="categorias-error" role="alert">{describirError(errorOperacion)}</p>}
       <section className="categorias-panel" aria-labelledby="titulo-categorias">
