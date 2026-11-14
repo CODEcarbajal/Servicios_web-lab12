@@ -109,3 +109,9 @@ Las capturas de los puntos 9 y 10 documentan los dos errores provocados. El punt
 ## Paso 13 · Repositorio y entregable
 
 El repositorio reúne el cliente `Lab11/`, el servidor `Servicios_web-Django-Lab08/`, instrucciones de ejecución y evidencias. El [documento compartido del laboratorio](https://docs.google.com/document/d/1IznOdCkEk4z_GaLl0GDVS-xth8FGnFo1/edit) contiene el desarrollo de los puntos 7 a 12 bajo sus consignas. La presentación en el campus debe verificarse en la actividad correspondiente; no se afirma una entrega sin su comprobante.
+
+Los commits `fed5bc9`, `e50ccd4` y `8f799e9` se publicaron en `main` conservando el historial de los pasos 1 a 6. El documento incluye las conclusiones y una copia PDF preparada para la actividad **Lab #12** de Desarrollo de Aplicaciones Empresariales.
+
+![Commits publicados en la rama principal](evidencias/13-commits.png)
+
+![Conclusiones añadidas al documento compartido](evidencias/conclusiones.png)
