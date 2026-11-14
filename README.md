@@ -1,4 +1,27 @@
-# Laboratorio 12 · React y Django REST
+# Laboratorio 12 · Consumo de una API REST desde React
+
+El laboratorio conecta el proyecto React de Cine Aurora (Lab 11) con la API Django REST del Lab 8. La integración usa Axios para consultar categorías de la cartelera, admite operaciones de alta y borrado en el cliente de la API y muestra los estados de carga, datos y error en la interfaz.
+
+## Arquitectura
+
+```mermaid
+flowchart LR
+    R["React · localhost:5173"] --> A["Cliente Axios"]
+    A -->|"HTTP · /api/categories/"| D["Django REST · localhost:8000"]
+    D --> S[(SQLite)]
+```
+
+| Capa | Carpeta | Responsabilidad |
+| --- | --- | --- |
+| Cliente | `Lab11/` | Vite sirve la cartelera y la página `/categorias`. Axios centraliza las peticiones a Django. |
+| Servidor | `Servicios_web-Django-Lab08/` | Django REST Framework expone los recursos en JSON y `django-cors-headers` autoriza el origen de React. |
+| Datos | SQLite local de Django | Guarda las categorías que devuelve la API, incluidos los géneros de ejemplo de Cine Aurora. |
+
+## Avance individual
+
+Completé los pasos 1 a 6. Configuré CORS, verifiqué las rutas de Django, incorporé Axios y conecté el listado de categorías con carga, tabla paginada y error con reintento. El alta y el borrado desde la interfaz, las pruebas provocadas y la entrega corresponden a los pasos 7 a 13 asignados a mi compañero.
+
+Consulta el [avance detallado y la captura](docs/avance.md).
 
 ## Servidor Django
 
