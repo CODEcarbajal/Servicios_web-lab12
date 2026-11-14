@@ -17,11 +17,13 @@ flowchart LR
 | Servidor | `Servicios_web-Django-Lab08/` | Django REST Framework expone los recursos en JSON y `django-cors-headers` autoriza el origen de React. |
 | Datos | SQLite local de Django | Guarda las categorías que devuelve la API, incluidos los géneros de ejemplo de Cine Aurora. |
 
-## Avance individual
+## Avance del equipo
 
-Completé los pasos 1 a 6. Configuré CORS, verifiqué las rutas de Django, incorporé Axios y conecté el listado de categorías con carga, tabla paginada y error con reintento. El alta y el borrado desde la interfaz, las pruebas provocadas y la entrega corresponden a los pasos 7 a 13 asignados a mi compañero.
+Los pasos 1 a 6 configuran CORS, verifican las rutas de Django e incorporan Axios y el listado con carga, datos y error. Los pasos 7 a 12 añaden el borrado, la página de alta, los mensajes de validación y las pruebas provocadas de CORS y servidor apagado. El repositorio reúne ambos proyectos y sus evidencias para el paso 13. La entrega en el campus se verifica por separado.
 
 Consulta el [avance detallado y la captura](docs/avance.md).
+
+El [documento del laboratorio](https://docs.google.com/document/d/1IznOdCkEk4z_GaLl0GDVS-xth8FGnFo1/edit) contiene las explicaciones y capturas debajo de cada consigna.
 
 ## Servidor Django
 
@@ -73,3 +75,13 @@ Las filas vienen de la base SQLite de Django a través de `GET /api/categories/`
 | Carga | Texto «Cargando categorías…» y un esqueleto de filas. |
 | Datos | Tabla con nombre, `slug` y descripción, con navegación cuando hay más páginas. Si la lista está vacía, se muestra un mensaje. |
 | Error | Motivo del fallo de conexión, tiempo de espera o código HTTP, y botón **Reintentar** para repetir la consulta en la misma página. |
+
+## Crear y eliminar categorías
+
+Desde el listado, **Nueva categoría** abre `/categorias/nueva`. Los campos controlados se envían con Axios a `POST /api/categories/`. Si Django devuelve `201`, React navega al listado sin recargar el documento y muestra la confirmación. El formulario utiliza `noValidate` para permitir la prueba de validación del servidor: enviar los campos obligatorios vacíos devuelve `400` y muestra los mensajes de Django conservando los valores introducidos.
+
+Cada fila permite **Eliminar**, **Confirmar eliminación** o **Cancelar**. Después de recibir `204` de `DELETE /api/categories/<slug>/`, se vuelve a consultar la lista. Si se eliminó su última fila, se retrocede una página. Durante las operaciones se desactivan los controles para evitar envíos repetidos.
+
+## Verificación de los pasos 7 a 12
+
+Se probó en Chrome el alta y el borrado de una categoría temporal «Animación Lab12», el formulario vacío, la retirada temporal del origen CORS y el apagado de Django. La configuración de CORS quedó restaurada. Las [capturas y observaciones](docs/avance.md#paso-7--añadir-el-borrado) registran los resultados. También pasaron `npm run lint`, `npm run build`, `npm test` y `python manage.py check`.
