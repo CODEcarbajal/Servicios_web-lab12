@@ -28,3 +28,15 @@ Se abrió la raíz en Chromium y Django REST Framework mostró **HTTP 200 OK** c
 | `DELETE` | `http://localhost:8000/api/categories/<slug>/` | Elimina la categoría indicada por su `slug` y devuelve `204` si tiene éxito. |
 
 El listado devolvió HTTP 200 con cinco categorías después de ejecutar `seed_blog`. En las rutas `/api/`, Django envía `Access-Control-Allow-Origin: http://localhost:5173` para el origen del cliente React. Una petición de prueba desde `http://localhost:5174` obtuvo la respuesta sin esa cabecera.
+
+## Cliente React
+
+En otra terminal, desde la raíz del repositorio:
+
+```bash
+cd Lab11
+npm ci
+npm run dev
+```
+
+Abrir `http://localhost:5173`. Vite utiliza ese puerto para coincidir con el origen autorizado por Django.

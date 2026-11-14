@@ -1,0 +1,16 @@
+:root {
+  --fuente-texto: 'Trebuchet MS', Arial, sans-serif;
+  --fuente-titulos: Georgia, 'Times New Roman', serif;
+  --tamano-nota: 0.85rem;
+  font-family: var(--fuente-texto);
+  color: #282320;
+  background: #f7f4ed;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --papel: #f7f4ed;
+  --tinta: #282320;
+  --vino: #702d3e;
+  --gris: #685f58;
+  --borde: #dcd6cb;
+  --ancho: 1200px;
+}
