@@ -10,5 +10,6 @@ export const cine = {
 export const navegacion = [
   { texto: 'Inicio', destino: '#inicio' },
   { texto: 'Cartelera', destino: '#cartelera' },
+  { texto: 'Categorías', destino: '/categorias' },
   { texto: 'Contacto', destino: '#contacto' },
 ]
