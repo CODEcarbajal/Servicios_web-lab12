@@ -14,7 +14,7 @@ python manage.py seed_blog
 python manage.py runserver localhost:8000
 ```
 
-`seed_blog` carga datos de ejemplo en la base SQLite local. Los archivos de la base se generan al preparar el entorno.
+`seed_blog` carga datos de ejemplo en la base SQLite local y reemplaza los registros de muestra existentes. Para actualizar una base del laboratorio con datos que quieras conservar, ejecuta solo `python manage.py migrate`. La migración actualiza las categorías originales de muestra que coinciden con los datos anteriores y conserva sus identificadores y relaciones.
 
 ## Rutas de la API
 
@@ -42,6 +42,8 @@ npm run dev
 Abrir `http://localhost:5173`. Vite utiliza ese puerto para coincidir con el origen autorizado por Django.
 
 Seleccionar **Categorías** en la navegación o abrir `http://localhost:5173/categorias`. La página solicita la primera página de categorías al entrar. El cliente Axios admite la variable `VITE_API_URL` para cambiar la dirección base de Django.
+
+Las filas vienen de la base SQLite de Django a través de `GET /api/categories/`. Los géneros y sus descripciones se prepararon a partir de títulos y sinopsis de la cartelera ficticia, que se encuentran en `Lab11/src/datos/peliculas.js`. Django guarda esas categorías como registros independientes.
 
 | Estado | Qué muestra el listado |
 | --- | --- |

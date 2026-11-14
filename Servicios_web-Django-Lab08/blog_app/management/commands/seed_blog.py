@@ -47,11 +47,11 @@ class Command(BaseCommand):
 
         # Create categories
         categories_data = [
-            {'name': 'Django', 'slug': 'django', 'description': 'Artículos sobre Django framework'},
-            {'name': 'Python', 'slug': 'python', 'description': 'Artículos sobre Python'},
-            {'name': 'Bases de datos', 'slug': 'bases-de-datos', 'description': 'Artículos sobre bases de datos y ORM'},
-            {'name': 'Testing', 'slug': 'testing', 'description': 'Artículos sobre testing'},
-            {'name': 'DevOps', 'slug': 'devops', 'description': 'Artículos sobre DevOps y despliegue'},
+            {'name': 'Ciencia ficción', 'slug': 'ciencia-ficcion', 'description': 'Viajes espaciales e inventos en Órbita lejana y Una casa en las nubes.'},
+            {'name': 'Drama', 'slug': 'drama', 'description': 'Historias de amistad y decisiones difíciles en El último verano y Marea adentro.'},
+            {'name': 'Aventura', 'slug': 'aventura', 'description': 'Exploraciones y viajes en El bosque secreto y Ruta al amanecer.'},
+            {'name': 'Suspenso', 'slug': 'suspenso', 'description': 'Una investigación sobre una grabación misteriosa en El eco del silencio.'},
+            {'name': 'Romance', 'slug': 'romance', 'description': 'Un pianista y una fotógrafa se conocen en Después de medianoche.'},
         ]
 
         categories = []
