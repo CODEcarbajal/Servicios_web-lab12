@@ -17,3 +17,13 @@
 .categorias-error { border-left: 4px solid var(--vino); }
 .categorias-error h2 { color: var(--vino); margin-bottom: 0.25rem; }
 .categorias-paginacion { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; padding: 1rem; border-top: 1px solid var(--borde); }
+.categorias-formulario { padding: 1.25rem; margin-bottom: 1.5rem; background: #fffdf9; border: 1px solid var(--borde); border-radius: 6px; }
+.categorias-formulario h2 { margin-bottom: 1rem; color: var(--vino); }
+.categorias-formulario fieldset { display: grid; gap: 0.65rem; border: 0; padding: 0; margin: 0; min-width: 0; }
+.categorias-formulario legend { margin-bottom: 1rem; }
+.categorias-formulario input, .categorias-formulario textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--borde); border-radius: 4px; background: white; color: inherit; font: inherit; }
+.categorias-formulario textarea { resize: vertical; }
+.categorias-formulario .button { justify-self: start; margin-top: 0.5rem; }
+.categorias-formulario small { overflow-wrap: anywhere; }
+.categorias-mensajes:not(:empty) { padding: 1rem; margin-bottom: 1rem; border-left: 4px solid var(--vino); background: var(--papel); }
+.categorias-acciones { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; min-width: 12rem; }
