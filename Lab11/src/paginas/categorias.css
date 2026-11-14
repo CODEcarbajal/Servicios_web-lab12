@@ -1,0 +1,19 @@
+.categorias { padding-block: clamp(2rem, 6vw, 5rem); }
+.categorias-cabecera { display: grid; gap: 1.25rem; margin-bottom: 1.5rem; }
+.categorias-cabecera a { justify-self: start; color: var(--vino); }
+.categorias-cabecera h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.05; }
+.categorias-panel { background: #fffdf9; border: 1px solid var(--borde); border-radius: 6px; }
+.categorias-tabla { overflow-x: auto; }
+.categorias-tabla table { width: 100%; border-collapse: collapse; text-align: left; }
+.categorias-tabla th, .categorias-tabla td { padding: 1rem; border-bottom: 1px solid var(--borde); }
+.categorias-tabla thead { color: var(--vino); background: var(--papel); }
+.categorias-tabla tbody tr:last-child > * { border-bottom: 0; }
+.categorias-tabla code { overflow-wrap: anywhere; }
+.categorias-vacio, .categorias-carga, .categorias-error { padding: 1.25rem; }
+.categorias-carga, .categorias-error { display: grid; justify-items: start; gap: 1rem; }
+.categorias-carga > div { width: 100%; }
+.categorias-fila-carga { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 1rem; padding-block: 0.75rem; }
+.categorias-fila-carga span { height: 0.875rem; border-radius: 5px; background: var(--borde); }
+.categorias-error { border-left: 4px solid var(--vino); }
+.categorias-error h2 { color: var(--vino); margin-bottom: 0.25rem; }
+.categorias-paginacion { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; padding: 1rem; border-top: 1px solid var(--borde); }

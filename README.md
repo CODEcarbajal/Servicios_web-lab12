@@ -40,3 +40,11 @@ npm run dev
 ```
 
 Abrir `http://localhost:5173`. Vite utiliza ese puerto para coincidir con el origen autorizado por Django.
+
+Seleccionar **Categorías** en la navegación o abrir `http://localhost:5173/categorias`. La página solicita la primera página de categorías al entrar. El cliente Axios admite la variable `VITE_API_URL` para cambiar la dirección base de Django.
+
+| Estado | Qué muestra el listado |
+| --- | --- |
+| Carga | Texto «Cargando categorías…» y un esqueleto de filas. |
+| Datos | Tabla con nombre, `slug` y descripción, con navegación cuando hay más páginas. Si la lista está vacía, se muestra un mensaje. |
+| Error | Motivo del fallo de conexión, tiempo de espera o código HTTP, y botón **Reintentar** para repetir la consulta en la misma página. |
